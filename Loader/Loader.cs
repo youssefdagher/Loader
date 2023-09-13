@@ -15,12 +15,12 @@ namespace Loader
     {
         public static void Load(string conf)
         {
-            string loader = @"C:\Users\Elia\Downloads\FYP_Data\Loader_Incoming";
+            //string loader = @"C:\Users\Elia\Downloads\FYP_Data\Loader_Incoming";
             using (SqlConnection connection = new SqlConnection(ParamsHelper.connectionStringData))
             {
                 connection.Open();
                 string fileMask = conf.Contains("ZTE_PM") ? "*ZTE_PM*.csv" : conf.Contains("ZTE_FM") ? "*ZTE_FM*.csv" : conf.Contains("ZTE_CM") ? "*ZTE_CM*.csv" : conf.Contains("JUN_CM") ? "*JUN_CM*.csv" : conf.Contains("JUN_FM") ? "*JUN_FM*.csv": conf.Contains("JUN_PM") ? "*JUN_PM*.csv" : "";
-                string[] files = Directory.GetFiles(loader, fileMask);
+                string[] files = Directory.GetFiles(ParamsHelper.Loader_inputFolder, fileMask);
                 //int filecount = 0;
                 foreach (string file in files)
                 {
